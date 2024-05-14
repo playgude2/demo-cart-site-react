@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import ProductList from "./components/ProductList";
+import Footer from "./components/Footer";
+import React, { useState } from "react";
 
 function App() {
+  const initialProductList = [
+    {
+      price: 9999,
+      name: "iPhone 15",
+      quantity: 1,
+    },
+    {
+      price: 9999,
+      name: "iPhone 10s",
+      quantity: 1,
+    },
+  ];
+
+  let [products, setProducts] = useState(initialProductList);
+
+  const incrementQty = (index) => {
+    let newProductList = [...products];
+    newProductList[index].quantity++;
+    setProducts(newProductList);
+  };
+
+  const decrementQty = (index) => {
+    let newProductList = [...products];
+    if (newProductList[index].quantity > 0) {
+      newProductList[index].quantity--;
+    }
+    setProducts(newProductList);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <main className="container mt-5">
+        <ProductList
+          productList={products}
+          incrementQty={incrementQty}
+          decrementQty={decrementQty}
+        />
+      </main>
+      <Footer products={products} />
+    </>
   );
 }
 
