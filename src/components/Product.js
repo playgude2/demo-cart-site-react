@@ -4,6 +4,7 @@ export default function Product({
   product,
   incrementQty,
   decrementQty,
+  deleteProduct,
   index,
 }) {
   return (
@@ -39,7 +40,16 @@ export default function Product({
           </button>
         </div>
       </div>
-      <div className="col-4">Total: £{product.quantity * product.price}</div>
+      <div className="col-3">Total: £{product.quantity * product.price}</div>
+      <div className="col-1">
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => deleteProduct(index)}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

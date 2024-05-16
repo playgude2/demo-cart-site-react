@@ -34,6 +34,11 @@ function App() {
     setProducts(newProductList);
   };
 
+  const deleteProduct = (index) => {
+    let newProductList = products.filter((_, i) => i !== index);
+    setProducts(newProductList);
+  };
+
   return (
     <>
       <Navbar />
@@ -42,6 +47,7 @@ function App() {
           productList={products}
           incrementQty={incrementQty}
           decrementQty={decrementQty}
+          deleteProduct={deleteProduct}
         />
       </main>
       <Footer products={products} />

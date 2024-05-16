@@ -5,6 +5,7 @@ export default function ProductList({
   productList,
   incrementQty,
   decrementQty,
+  deleteProduct,
 }) {
   return (
     <div>
@@ -15,6 +16,7 @@ export default function ProductList({
           index={i}
           incrementQty={incrementQty}
           decrementQty={decrementQty}
+          deleteProduct={deleteProduct}
         />
       ))}
     </div>
